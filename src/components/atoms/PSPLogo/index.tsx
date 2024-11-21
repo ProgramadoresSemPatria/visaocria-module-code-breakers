@@ -1,4 +1,5 @@
 import Image from 'next/image';
+import LinkItem from '../LinkItem';
 
 interface PSPLogoProps {
   height: number;
@@ -6,13 +7,15 @@ interface PSPLogoProps {
 }
 const PSPLogo: React.FC<PSPLogoProps> = ({ height, width }) => {
   return (
-    <Image
-      src="/images/PspAvatar.webp"
-      width={width}
-      height={height}
-      className="rounded-md"
-      alt="Logo of borderless community enterprise"
-    />
+    <LinkItem href={'/'}>
+      <Image
+        src="/images/logoBgTransparent.webp"
+        width={width}
+        height={height}
+        className="rounded-md"
+        alt="Logo of borderless community enterprise"
+      />
+    </LinkItem>
   );
 };
 
