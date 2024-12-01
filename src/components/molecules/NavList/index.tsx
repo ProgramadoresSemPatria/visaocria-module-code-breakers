@@ -16,7 +16,7 @@ const NavListHeader = () => {
         <ListItem className="text-[#e0e0e0] text-lg">Courses</ListItem>
       </LinkItem>
       <LinkItem
-        href="/practice"
+        href="https://neetcode.io/practice" target='_noblank'
         className="rounded-full text-center px-4 hover:bg-[#1e1e2f] py-1 transition-colors ease-linear transform duration-200"
       >
         <ListItem className="text-[#e0e0e0] text-lg">Practice</ListItem>
@@ -28,7 +28,7 @@ const NavListHeader = () => {
         <ListItem className="text-[#e0e0e0] text-lg">Roadmap</ListItem>
       </LinkItem>
       <LinkItem
-        href="/newsletter"
+         href="https://neetcode.io/newsletter" target='_noblank'
         className="rounded-full text-center px-4 hover:bg-[#1e1e2f] py-1 transition-colors ease-linear transform duration-200"
       >
         <ListItem className="text-[#e0e0e0] text-lg">Newsletter</ListItem>
