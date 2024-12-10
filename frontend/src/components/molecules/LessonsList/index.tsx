@@ -1,55 +1,27 @@
-import LinkItem from 'frontend/src/components/atoms/LinkItem';
-import ListItem from 'frontend/src/components/atoms/ListItem';
+import LinkItem from 'src/components/atoms/LinkItem';
+import ListItem from 'src/components/atoms/ListItem';
 import CardLessons from '../CardLessons';
-
-const LessonsCourse = [
-  {
-    imageUrl: '/images/logoBgTransparent.webp',
-    title: 'Python Cheat Sheet',
-    titleAlt: 'Python Cheat Sheet course image',
-  },
-  {
-    imageUrl: '/images/logoBgTransparent.webp',
-    title: 'Big-O Notation',
-    titleAlt: 'Big-O Notation course image',
-  },
-  {
-    imageUrl: '/images/logoBgTransparent.webp',
-    title: '8 Design Patterns Every Programmer Should Know',
-    titleAlt: '8 Design Patterns Every Programmer Should Know course image',
-  },
-  {
-    imageUrl: '/images/logoBgTransparent.webp',
-    title: '20 Must-know System Design Concepts',
-    titleAlt: '20 Must-know System Design Concepts course image',
-  },
-  {
-    imageUrl: '/images/logoBgTransparent.webp',
-    title: '30-Day JavaScript Coding Challenge',
-    titleAlt: '30-Day JavaScript Coding Challenge course image',
-  },
-  {
-    imageUrl: '/images/logoBgTransparent.webp',
-    title: 'Design a YouTube Clone',
-    titleAlt: 'Design a YouTube Clone course image',
-  },
-  {
-    imageUrl: '/images/logoBgTransparent.webp',
-    title: 'MongoDB Crash Course',
-    titleAlt: 'MongoDB Crash Course course image',
-  },
-];
+import useLessonsData from 'src/hooks/useLessonsData';
 
 const LessonsList = () => {
+  const { lessonsData, query } = useLessonsData();
+
+  if (query.isLoading) {
+    return <p>Carregando cursos...</p>;
+  }
+
+  if (query.isError) {
+    return <p>Erro ao carregar os cursos</p>;
+  }
   return (
     <ul className="grid grid-rows-2 grid-flow-col gap-8 justify-center items-center">
-      {LessonsCourse.map((lesson) => (
+      {lessonsData.map((lesson) => (
         <LinkItem href={'/'} key={lesson.title}>
           <ListItem>
             <CardLessons
-              imageUrl={lesson.imageUrl}
+              imageUrl={lesson.image_url}
               title={lesson.title}
-              titleAlt={lesson.titleAlt}
+              titleAlt={lesson.title}
             />
           </ListItem>
         </LinkItem>
