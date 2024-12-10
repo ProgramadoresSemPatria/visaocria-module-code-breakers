@@ -1,27 +1,21 @@
-import Subheading from 'frontend/src/components/atoms/Subheading';
-import Title from 'frontend/src/components/atoms/Title';
+import Subheading from 'src/components/atoms/Subheading';
+import Title from 'src/components/atoms/Title';
 import CoursesList from '../CoursesList';
-
-const SystemDesignCourses = [
-  {
-    url: 'system-design-for-beginners',
-    title: 'System Design for Beginners',
-    description: 'Learn the foundations of system design interviews.',
-    duration: '10 hours',
-    difficulty: 'Medium',
-    imageUrl: '/images/logoBgTransparent.webp',
-  },
-  {
-    url: 'system-design-interview',
-    title: 'System Design Interview',
-    description: 'Learn common system design interview questions.',
-    duration: '10 hours',
-    difficulty: 'Medium',
-    imageUrl: '/images/logoBgTransparent.webp',
-  },
-];
+import useCoursesData from 'src/hooks/useCoursesData';
 
 const SystemDesignDiv = () => {
+  const { coursesData, query } = useCoursesData();
+  const SystemDesignCourses = coursesData.filter(
+    (course) => course.matter === 'SYSTEM_DESIGN',
+  );
+
+  if (query.isLoading) {
+    return <p>Carregando cursos...</p>;
+  }
+
+  if (query.isError) {
+    return <p>Erro ao carregar os cursos</p>;
+  }
   return (
     <div className="flex flex-row gap-8 justify-between px-52">
       <div className="flex flex-col gap-4 w-[400px]">
