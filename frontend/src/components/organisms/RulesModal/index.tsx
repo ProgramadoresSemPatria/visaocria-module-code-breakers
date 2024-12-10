@@ -1,8 +1,8 @@
 'use client';
-import Button from 'frontend/src/components/atoms/Button';
-import { CustomScrollbar } from 'frontend/src/components/molecules/CustomScrollbar';
-import RulesModalList from 'frontend/src/components/molecules/RulesModalList';
-import useAboutModalStore from 'frontend/src/store/AboutModalStore';
+import Button from 'src/components/atoms/Button';
+import { CustomScrollbar } from 'src/components/molecules/CustomScrollbar';
+import RulesModalList from 'src/components/molecules/RulesModalList';
+import useAboutModalStore from 'src/store/AboutModalStore';
 
 const AboutModal = () => {
   const { setIsAboutModalStore } = useAboutModalStore();

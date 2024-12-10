@@ -1,5 +1,5 @@
-import Title from 'frontend/src/components/atoms/Title';
-import LessonsList from 'frontend/src/components/molecules/LessonsList';
+import Title from 'src/components/atoms/Title';
+import LessonsList from 'src/components/molecules/LessonsList';
 
 const LessonsSectionHome = () => {
   return (
