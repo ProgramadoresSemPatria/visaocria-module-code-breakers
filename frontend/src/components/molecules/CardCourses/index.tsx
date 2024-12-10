@@ -1,21 +1,13 @@
 import Image from 'next/image';
-
-export interface CourseCardProps {
-  url: string;
-  title: string;
-  description: string;
-  duration: string;
-  difficulty: string;
-  imageUrl: string;
-}
+import { Courses } from 'src/store/coursesStore';
 
 export default function CourseCard({
   title,
   description,
   duration,
   difficulty,
-  imageUrl,
-}: CourseCardProps) {
+  image_url,
+}: Courses) {
   const difficultyColor = () => {
     switch (difficulty) {
       case 'Easy':
@@ -32,7 +24,12 @@ export default function CourseCard({
   return (
     <div className="w-[300px] rounded-lg overflow-hidden shadow-xl bg-gray-800 text-center hover:shadow-md hover:bg-[#13181c] hover:ring-1 hover:ring-blue-600 transition-colors transform duration-200 ease-linear">
       <div className="relative h-[200px]">
-        <Image src={imageUrl} alt={title} layout="fill" objectFit="cover" />
+        <Image
+          src={image_url ?? ''}
+          alt={title}
+          layout="fill"
+          objectFit="cover"
+        />
       </div>
 
       <div className="flex flex-col h-[200px] p-4 text-white">

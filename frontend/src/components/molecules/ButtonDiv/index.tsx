@@ -1,5 +1,5 @@
 'use client';
-import Button from 'frontend/src/components/atoms/Button';
+import Button from 'src/components/atoms/Button';
 import { useRouter } from 'next/navigation';
 
 const ButtonDiv = () => {
