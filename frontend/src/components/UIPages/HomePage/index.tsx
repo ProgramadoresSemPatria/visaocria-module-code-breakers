@@ -1,8 +1,8 @@
-import CTASectionHome from 'frontend/src/components/molecules/CTASectionHome';
-import FooterSection from 'frontend/src/components/molecules/FooterSection';
-import PracticeFreeSectionHome from 'frontend/src/components/molecules/PracticeFreeSectionHome';
-import CoursesSectionHome from 'frontend/src/components/organisms/CoursesSectionHome';
-import LessonsSectionHome from 'frontend/src/components/organisms/LessonsSectionHome';
+import CTASectionHome from 'src/components/molecules/CTASectionHome';
+import FooterSection from 'src/components/molecules/FooterSection';
+import PracticeFreeSectionHome from 'src/components/molecules/PracticeFreeSectionHome';
+import CoursesSectionHome from 'src/components/organisms/CoursesSectionHome';
+import LessonsSectionHome from 'src/components/organisms/LessonsSectionHome';
 
 const HomePage = () => {
   return (
