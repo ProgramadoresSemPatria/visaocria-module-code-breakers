@@ -11,6 +11,9 @@
     "format": "prettier --write ."
   },
   "dependencies": {
+    "@tanstack/react-query": "^5.62.3",
+    "@tanstack/react-query-devtools": "^5.62.3",
+    "axios": "^1.7.9",
     "dagre": "^0.8.5",
     "framer-motion": "^11.11.17",
     "next": "^15.0.3",
