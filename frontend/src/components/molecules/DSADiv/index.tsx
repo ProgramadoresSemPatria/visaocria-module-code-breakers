@@ -1,27 +1,22 @@
-import Subheading from 'frontend/src/components/atoms/Subheading';
-import Title from 'frontend/src/components/atoms/Title';
+import Subheading from 'src/components/atoms/Subheading';
+import Title from 'src/components/atoms/Title';
 import CoursesList from '../CoursesList';
-
-const DSACourses = [
-  {
-    url: 'dsa-for-beginners',
-    title: 'Algorithms & Data Structures for Beginners',
-    description: 'Learn the foundations of coding interviews.',
-    duration: '25 hours',
-    difficulty: 'Medium',
-    imageUrl: '/images/logoBgTransparent.webp',
-  },
-  {
-    url: 'advanced-algorithms',
-    title: 'Advanced Algorithms',
-    description: 'Learn every algorithm you would ever need.',
-    duration: '25 hours',
-    difficulty: 'Hard',
-    imageUrl: '/images/logoBgTransparent.webp',
-  },
-];
+import useCoursesData from 'src/hooks/useCoursesData';
 
 const DSADiv = () => {
+  const { coursesData, query } = useCoursesData();
+  const DSACourses = coursesData.filter(
+    (course) => course.matter === 'DATA_STRUCTURES_AND_ALGORITHMS',
+  );
+
+  if (query.isLoading) {
+    return <p>Carregando cursos...</p>;
+  }
+
+  if (query.isError) {
+    return <p>Erro ao carregar os cursos</p>;
+  }
+
   return (
     <div className="flex flex-row gap-8 justify-between px-52">
       <div className="flex flex-col gap-4 w-[400px]">
