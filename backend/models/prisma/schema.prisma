@@ -1,0 +1,100 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+enum CoursesMatter {
+  DATA_STRUCTURES_AND_ALGORITHMS
+  SYSTEM_DESIGN
+  PYTHON
+  FULL_STACK_DEVELOPMENT
+  OBJECT_ORIENTED_DESIGN
+}
+
+
+model Courses {
+  id Int @id @default(autoincrement())
+  title String
+  description String
+  duration String
+  difficulty String
+  image_url String
+  link_url String
+  matter CoursesMatter
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Lessons {
+  id Int @id @default(autoincrement())
+  title String
+  link_url String
+  image_url String
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Roadmap {
+  id Int @id @default(autoincrement())
+  title String
+  progress Int @default(0)
+  total_problems Int   @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+  
+  subjects Subject[]
+}
+
+model Subject {
+  id Int @id @default(autoincrement())
+  title String
+  roadmap_id Int
+  source Int @default(0)
+  target Int @default(0)
+  progress Int @default(0)
+  total_problems Int   @default(0)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  prerequisites Prerequisite[]
+  problems Problem[]
+  roadmap Roadmap @relation(fields: [roadmap_id], references: [id])
+}
+
+model Prerequisite {
+  id         Int       @id @default(autoincrement())
+  title      String
+  description String    
+  subject_id  Int
+  link String
+
+  subject    Subject   @relation(fields: [subject_id], references: [id])
+}
+
+enum ProblemStatus {
+  RESOLVED
+  UNRESOLVED
+}
+
+model Problem {
+  id         Int       @id @default(autoincrement())
+  title      String
+  difficulty String
+  status     ProblemStatus @default(UNRESOLVED)
+  url        String
+  solution_url   String
+  subject_id  Int
+  isSolved Boolean @default(false)
+
+  subject    Subject   @relation(fields: [subject_id], references: [id])
+}
