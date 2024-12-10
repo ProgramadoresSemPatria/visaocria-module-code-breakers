@@ -1,14 +1,19 @@
-'use client';
 import { create } from 'zustand';
 
-type RoadmapModalStore = {
+interface RoadmapModalState {
   isRoadmapModalOpen: boolean;
-  setIsRoadmapModalOpen: (arg0: boolean) => void;
-};
+  selectedNode: { label: string; description?: string } | null;
+  setIsRoadmapModalOpen: (isOpen: boolean) => void;
+  setSelectedNode: (
+    node: { label: string; description?: string } | null,
+  ) => void;
+}
 
-const useRoadmapModalStore = create<RoadmapModalStore>((set) => ({
+const useRoadmapModalStore = create<RoadmapModalState>((set) => ({
   isRoadmapModalOpen: false,
-  setIsRoadmapModalOpen: (isRoadmapModalOpen) => set({ isRoadmapModalOpen }),
+  selectedNode: null,
+  setIsRoadmapModalOpen: (isOpen) => set({ isRoadmapModalOpen: isOpen }),
+  setSelectedNode: (node) => set({ selectedNode: node }),
 }));
 
 export default useRoadmapModalStore;
