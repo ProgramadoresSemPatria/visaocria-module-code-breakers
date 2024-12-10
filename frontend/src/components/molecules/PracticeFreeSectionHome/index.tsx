@@ -1,6 +1,6 @@
-import Title from 'frontend/src/components/atoms/Title';
+import Title from 'src/components/atoms/Title';
 import PracticeFreeList from '../PracticeFreeList';
-import Subheading from 'frontend/src/components/atoms/Subheading';
+import Subheading from 'src/components/atoms/Subheading';
 import ButtonDiv from '../ButtonDiv';
 
 const PracticeFreeSectionHome = () => {
