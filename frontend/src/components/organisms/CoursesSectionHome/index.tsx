@@ -1,9 +1,9 @@
-import Title from 'frontend/src/components/atoms/Title';
-import DSADiv from 'frontend/src/components/molecules/DSADiv';
-import FullStackDiv from 'frontend/src/components/molecules/FullStackDiv';
-import ObjectOrientedDesignDiv from 'frontend/src/components/molecules/ObjectOrientedDesignDiv';
-import PythonDiv from 'frontend/src/components/molecules/PythonDiv';
-import SystemDesignDiv from 'frontend/src/components/molecules/SystemDesignDiv';
+import Title from 'src/components/atoms/Title';
+import DSADiv from 'src/components/molecules/DSADiv';
+import FullStackDiv from 'src/components/molecules/FullStackDiv';
+import ObjectOrientedDesignDiv from 'src/components/molecules/ObjectOrientedDesignDiv';
+import PythonDiv from 'src/components/molecules/PythonDiv';
+import SystemDesignDiv from 'src/components/molecules/SystemDesignDiv';
 
 const CoursesSectionHome = () => {
   return (
