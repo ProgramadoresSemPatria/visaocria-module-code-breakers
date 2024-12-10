@@ -1,27 +1,21 @@
-import Subheading from 'frontend/src/components/atoms/Subheading';
-import Title from 'frontend/src/components/atoms/Title';
+import Subheading from 'src/components/atoms/Subheading';
+import Title from 'src/components/atoms/Title';
 import CoursesList from '../CoursesList';
-
-const ObjectOrientedDesignCourses = [
-  {
-    url: 'ood-interview',
-    title: 'Object Oriented Design Interviews',
-    description: 'Learn Object Oriented Design interview questions.',
-    duration: '8 hours',
-    difficulty: 'Easy',
-    imageUrl: '/images/logoBgTransparent.webp',
-  },
-  {
-    url: 'design-patterns',
-    title: 'Object Oriented Design Patterns',
-    description: 'Learn & implement commom coding design patterns.',
-    duration: '8 hours',
-    difficulty: 'Easy',
-    imageUrl: '/images/logoBgTransparent.webp',
-  },
-];
+import useCoursesData from 'src/hooks/useCoursesData';
 
 const ObjectOrientedDesignDiv = () => {
+  const { coursesData, query } = useCoursesData();
+  const ObjectOrientedDesignCourses = coursesData.filter(
+    (course) => course.matter === 'OBJECT_ORIENTED_DESIGN',
+  );
+
+  if (query.isLoading) {
+    return <p>Carregando cursos...</p>;
+  }
+
+  if (query.isError) {
+    return <p>Erro ao carregar os cursos</p>;
+  }
   return (
     <div className="flex flex-row gap-8 justify-between px-52">
       <div className="flex flex-col gap-4 w-[400px]">
