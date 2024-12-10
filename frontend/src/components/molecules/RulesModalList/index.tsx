@@ -1,4 +1,4 @@
-import ListItem from 'frontend/src/components/atoms/ListItem';
+import ListItem from 'src/components/atoms/ListItem';
 
 const RulesModalList = () => {
   return (
@@ -12,8 +12,8 @@ const RulesModalList = () => {
         in the <strong>Practice</strong> page.
       </ListItem>
       <ListItem className="text-[#e0e0e0] text-[18px]">
-        Get stuck? I've created a detailed 🎥 <strong>video explanation</strong>{' '}
-        for each problem.
+        Get stuck? I&apos;ve created a detailed 🎥{' '}
+        <strong>video explanation</strong> for each problem.
       </ListItem>
       <ListItem className="text-[#e0e0e0] text-[18px]">
         So far we have code solutions for{' '}

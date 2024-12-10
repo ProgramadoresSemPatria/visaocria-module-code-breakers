@@ -4,9 +4,10 @@ import { useMemo } from 'react';
 import ReactFlow, { Controls, Node, Edge } from 'reactflow';
 import 'reactflow/dist/style.css';
 import dagre from 'dagre';
-import RoadmapNode from 'frontend/src/components/molecules/RoadmapNodes';
-import { useReactFlowContext } from 'frontend/src/hooks/useReactFlowContext';
-import useRoadmapModalStore from 'frontend/src/store/RoadmapModalStore';
+import RoadmapNode from 'src/components/molecules/RoadmapNodes';
+import { useReactFlowContext } from 'src/hooks/useReactFlowContext';
+import useRoadmapModalStore from 'src/store/RoadmapModalStore';
+import useRoadmapData from 'src/hooks/useRoadmapData';
 
 interface RoadmapNodeData {
   label: string;
@@ -43,117 +44,6 @@ const getLayoutedElements = (nodes: Node[], edges: Edge[]) => {
   return { nodes, edges };
 };
 
-const initialNodes: Node<RoadmapNodeData>[] = [
-  {
-    id: '1',
-    data: { label: 'Arrays & Hashing' },
-    type: 'custom',
-    position: { x: 0, y: 0 },
-  },
-  {
-    id: '2',
-    data: { label: 'Two Pointers' },
-    type: 'custom',
-    position: { x: 0, y: 0 },
-  },
-  {
-    id: '3',
-    data: { label: 'Stack' },
-    type: 'custom',
-    position: { x: 0, y: 0 },
-  },
-  {
-    id: '4',
-    data: { label: 'Binary Search' },
-    type: 'custom',
-    position: { x: 0, y: 0 },
-  },
-  {
-    id: '5',
-    data: { label: 'Sliding Window' },
-    type: 'custom',
-    position: { x: 0, y: 0 },
-  },
-  {
-    id: '6',
-    data: { label: 'Linked List' },
-    type: 'custom',
-    position: { x: 0, y: 0 },
-  },
-  {
-    id: '7',
-    data: { label: 'Trees' },
-    type: 'custom',
-    position: { x: 0, y: 0 },
-  },
-  {
-    id: '8',
-    data: { label: 'Tries' },
-    type: 'custom',
-    position: { x: 0, y: 0 },
-  },
-  {
-    id: '9',
-    data: { label: 'Heap / Priority Queue' },
-    type: 'custom',
-    position: { x: 0, y: 0 },
-  },
-  {
-    id: '10',
-    data: { label: 'Backtracking' },
-    type: 'custom',
-    position: { x: 0, y: 0 },
-  },
-  {
-    id: '11',
-    data: { label: 'Intervals' },
-    type: 'custom',
-    position: { x: 0, y: 0 },
-  },
-  {
-    id: '12',
-    data: { label: 'Greedy' },
-    type: 'custom',
-    position: { x: 0, y: 0 },
-  },
-  {
-    id: '13',
-    data: { label: 'Advanced Graphs' },
-    type: 'custom',
-    position: { x: 0, y: 0 },
-  },
-  {
-    id: '14',
-    data: { label: 'Graphs' },
-    type: 'custom',
-    position: { x: 0, y: 0 },
-  },
-  {
-    id: '15',
-    data: { label: '1-D DP' },
-    type: 'custom',
-    position: { x: 0, y: 0 },
-  },
-  {
-    id: '16',
-    data: { label: '2-D DP' },
-    type: 'custom',
-    position: { x: 0, y: 0 },
-  },
-  {
-    id: '17',
-    data: { label: 'Bit Manipulation' },
-    type: 'custom',
-    position: { x: 0, y: 0 },
-  },
-  {
-    id: '18',
-    data: { label: 'Math & Geometry' },
-    type: 'custom',
-    position: { x: 0, y: 0 },
-  },
-];
-
 const initialEdges: Edge[] = [
   { id: 'e1-2', source: '1', target: '2' },
   { id: 'e1-3', source: '1', target: '3' },
@@ -181,13 +71,31 @@ const initialEdges: Edge[] = [
 ];
 
 const Diagram: React.FC = () => {
-  const { setIsRoadmapModalOpen } = useRoadmapModalStore();
   const nodeTypes = useMemo(() => ({ custom: RoadmapNode }), []);
-  const { nodes: layoutedNodes, edges: layoutedEdges } = useMemo(
-    () => getLayoutedElements(initialNodes, initialEdges),
-    [],
+  const { roadmapData } = useRoadmapData();
+
+  const nodes: Node<RoadmapNodeData>[] = roadmapData.flatMap((element) =>
+    element.subjects.map((subject) => ({
+      id: subject.source.toString(),
+      data: { label: subject.title },
+      type: 'custom',
+      position: { x: 0, y: 0 },
+    })),
   );
+
+  const { nodes: layoutedNodes, edges: layoutedEdges } = useMemo(
+    () => getLayoutedElements(nodes, initialEdges),
+    [nodes],
+  );
+
   const { onInit } = useReactFlowContext();
+  const { setIsRoadmapModalOpen, setSelectedNode } = useRoadmapModalStore();
+
+  const handleNodeClick = async (event: React.MouseEvent, node: Node) => {
+    setSelectedNode(node.data);
+    // await new Promise((resolve) => setTimeout(resolve, 2000));
+    setIsRoadmapModalOpen(true);
+  };
 
   return (
     <div className="h-screen w-full">
@@ -196,7 +104,7 @@ const Diagram: React.FC = () => {
         edges={layoutedEdges}
         nodeTypes={nodeTypes}
         onInit={onInit}
-        onClick={() => setIsRoadmapModalOpen(true)}
+        onNodeClick={handleNodeClick}
       >
         <Controls />
       </ReactFlow>

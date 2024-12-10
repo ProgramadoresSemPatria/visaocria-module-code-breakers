@@ -1,10 +1,10 @@
 'use client';
-import Subheading from 'frontend/src/components/atoms/Subheading';
-import Title from 'frontend/src/components/atoms/Title';
+import Subheading from 'src/components/atoms/Subheading';
+import Title from 'src/components/atoms/Title';
 import dynamic from 'next/dynamic';
 
 const ComponentFramerMotion = dynamic(
-  () => import('frontend/src/components/molecules/ComponentFramerMotion'),
+  () => import('src/components/molecules/ComponentFramerMotion'),
   {
     ssr: false,
   },

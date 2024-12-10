@@ -1,4 +1,4 @@
-import ListItem from 'frontend/src/components/atoms/ListItem';
+import ListItem from 'src/components/atoms/ListItem';
 import { FaCheck } from 'react-icons/fa';
 
 const PracticeFreeList = () => {

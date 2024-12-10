@@ -1,5 +1,5 @@
-import NavListHeader from 'frontend/src/components/molecules/NavList';
-import UserActions from 'frontend/src/components/molecules/UserActions';
+import NavListHeader from 'src/components/molecules/NavList';
+import UserActions from 'src/components/molecules/UserActions';
 
 const Header = () => {
   return (

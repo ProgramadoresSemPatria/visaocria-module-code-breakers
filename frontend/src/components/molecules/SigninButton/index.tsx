@@ -1,4 +1,4 @@
-import Button from 'frontend/src/components/atoms/Button';
+import Button from 'src/components/atoms/Button';
 
 const SigninButton = () => {
   return (

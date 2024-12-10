@@ -1,5 +1,5 @@
-import Button from 'frontend/src/components/atoms/Button';
-import useCoursesNavigationStore from 'frontend/src/store/CoursesNavigation';
+import Button from 'src/components/atoms/Button';
+import useCoursesNavigationStore from 'src/store/CoursesNavigation';
 
 const CourseNavigation: React.FC = () => {
   const { activeTab, setActiveTab } = useCoursesNavigationStore();

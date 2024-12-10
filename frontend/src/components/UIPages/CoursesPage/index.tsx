@@ -1,7 +1,7 @@
-import CourseNavigation from 'frontend/src/components/molecules/CoursesNavigation';
-import CoursesSectionHome from 'frontend/src/components/organisms/CoursesSectionHome';
-import LessonsSectionHome from 'frontend/src/components/organisms/LessonsSectionHome';
-import useCoursesNavigationStore from 'frontend/src/store/CoursesNavigation';
+import CourseNavigation from 'src/components/molecules/CoursesNavigation';
+import CoursesSectionHome from 'src/components/organisms/CoursesSectionHome';
+import LessonsSectionHome from 'src/components/organisms/LessonsSectionHome';
+import useCoursesNavigationStore from 'src/store/CoursesNavigation';
 
 const CoursesPage = () => {
   const { activeTab } = useCoursesNavigationStore();

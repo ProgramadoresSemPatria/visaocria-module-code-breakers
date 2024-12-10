@@ -1,6 +1,6 @@
-import Button from 'frontend/src/components/atoms/Button';
-import { useReactFlowContext } from 'frontend/src/hooks/useReactFlowContext';
-import useAboutModalStore from 'frontend/src/store/AboutModalStore';
+import Button from 'src/components/atoms/Button';
+import { useReactFlowContext } from 'src/hooks/useReactFlowContext';
+import useAboutModalStore from 'src/store/AboutModalStore';
 import { FaQuestion } from 'react-icons/fa';
 import { MdOutlineSettings } from 'react-icons/md';
 
