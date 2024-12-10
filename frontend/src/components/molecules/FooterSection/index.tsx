@@ -1,5 +1,5 @@
-import LinkItem from 'frontend/src/components/atoms/LinkItem';
-import Subheading from 'frontend/src/components/atoms/Subheading';
+import LinkItem from 'src/components/atoms/LinkItem';
+import Subheading from 'src/components/atoms/Subheading';
 
 const FooterSection = () => {
   return (
