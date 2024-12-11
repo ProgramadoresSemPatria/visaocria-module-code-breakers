@@ -8,10 +8,13 @@ import { useQuery } from '@tanstack/react-query';
 import axiosInstance from 'src/axios';
 import { useEffect, useState } from 'react';
 import { Subject } from 'src/interface/subject';
+import ConfigModal from 'src/components/organisms/ConfigModal';
+import useConfigModalStore from 'src/store/ConfigModalStore';
 
 const Roadmap = () => {
   const { isAboutModalStore } = useAboutModalStore();
   const { isRoadmapModalOpen, selectedNode } = useRoadmapModalStore();
+  const { isConfigModalStore } = useConfigModalStore();
   const [subjectSelected, setSubjectSelected] = useState<Subject>();
   const title = selectedNode?.label;
 
@@ -48,6 +51,7 @@ const Roadmap = () => {
         />
       )}
       {isAboutModalStore && <AboutModal />}
+      {isConfigModalStore && <ConfigModal />}
       <RoadmapPage />
     </>
   );
