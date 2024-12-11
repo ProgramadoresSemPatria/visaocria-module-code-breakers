@@ -16,7 +16,7 @@ const LessonsList = () => {
   return (
     <ul className="grid grid-rows-2 grid-flow-col gap-8 justify-center items-center">
       {lessonsData.map((lesson) => (
-        <LinkItem href={'/'} key={lesson.title}>
+        <LinkItem href={lesson.link_url} key={lesson.title} target="_blank noreferrer noopener">
           <ListItem>
             <CardLessons
               imageUrl={lesson.image_url}

@@ -1,6 +1,8 @@
 import { create } from 'zustand';
 
 export interface Courses {
+  source: any;
+  id: any;
   title: string;
   description: string;
   duration: string;

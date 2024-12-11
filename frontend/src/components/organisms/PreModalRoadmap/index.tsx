@@ -3,10 +3,12 @@ import Title from 'src/components/atoms/Title';
 import PreModalNavigation from 'src/components/molecules/PreModalNavigation';
 import PreModalPreferences from 'src/components/molecules/PreModalPreferences';
 import ProgressBar from 'src/components/molecules/ProgressBar';
+import useRenderRoadmapStore from 'src/store/renderRoadmapStore';
 import useRoadmapStore, { RoadmapList } from 'src/store/RoadmapStore';
 
 const PreModalRoadmap = () => {
   const { roadmapData }: { roadmapData: RoadmapList[] } = useRoadmapStore();
+  const { selectedRoadmap } = useRenderRoadmapStore();
 
   const [overallProgress, setOverallProgress] = useState(0);
 
@@ -40,8 +42,12 @@ const PreModalRoadmap = () => {
         Select Roadmap
       </Title>
       <PreModalNavigation />
-      <ProgressBar progress={overallProgress} width="w-full" />
-      <p className="text-[#e0e0e0] text-md">({overallProgress}/150)</p>
+      {selectedRoadmap === 'Algorithms' && (
+        <>
+          <ProgressBar progress={overallProgress} width="w-full" />
+          <p className="text-[#e0e0e0] text-md">({overallProgress}/150)</p>
+        </>
+      )}
 
       <PreModalPreferences />
     </div>
